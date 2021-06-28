@@ -1,0 +1,39 @@
+<div class="sign borderradsignIn" [ngClass]=" (!signInDisplay) ? 'signInColor': ''">
+    <div class="navbutton" *ngIf="!signInDisplay">
+        <h1 class="fontsize">Welcome Back!</h1>
+        <p>To keep connected with us please login <br> with your personal info</p>
+        <!-- <p>Sign In data: {{signinData}}</p> -->
+        <button class="buttoncss2" style="background: #ff4d4d" (click)="signIn()">SIGN IN</button>
+    </div>
+    <div *ngIf="signInDisplay">
+        <h1 class="fontsize">Sign In</h1>
+        <div class="subscribe-icons divisons">
+            <a class="dot" href="https://www.instagram.com/funcomapp/" target="_blank"><p class="navroutes">f</p></a>
+            <a class="dot" href="https://twitter.com/FuncomT" target="_blank"><p class="navroutes">G</p></a>
+            <a class="dot" href="https://facebook.com/funcomapp" target="_blank"><p class="navroutes">in</p></a>
+        </div>
+        <p class="textcss">or use your account</p>
+        <form [formGroup]="signInForm" (ngSubmit)="submit()">
+            <input class="inputform" type="text" name="email" id="email" placeholder="Email" formControlName="email">
+            <input class="inputform" type="password" name="password" id="password" placeholder="Password" (ngModelChange)="passwordCheck()" formControlName="password">
+            <div class="spanpasswrd">
+                <span *ngIf="pswdAlphabets">Password should have atleast 8 alphabets</span>
+                <span *ngIf="pswdSpecialDigit">Password should have atleast 1 special character and 1 digit</span>
+                <span *ngIf="pswdLength">Password should have atleast 15 characters</span>
+            </div>
+            <div class="bottomlinealign">
+                <span class="float-right textcss">
+                    <a class="link" style="cursor: pointer;" >
+                        Forgot Your password
+                    </a>
+                </span>
+                <button class="button button-primary w-100 m-b-6 h-46 buttoncss"  type="submit">
+                    SIGN IN
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

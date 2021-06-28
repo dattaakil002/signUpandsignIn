@@ -1,0 +1,35 @@
+<div class="sign borderradsignUp" [ngClass]=" (signUpDisplay) ? 'signUpColor': ''">
+    <div class="navbutton" *ngIf="signUpDisplay">
+        <h1 class="fontsize">Hello, Friend!</h1>
+        <p>Enter your details and start journey with <br>us</p>
+        <!-- <p>Sign Up data: {{signupData}}</p> -->
+        <button class="buttoncss2" (click)="signUp()">SIGN UP</button>
+    </div>
+
+    <div *ngIf="!signUpDisplay">
+        <h1 class="fontsize">Create Account</h1>
+        <div class="subscribe-icons divisons">
+            <a class="dot" href="https://www.instagram.com/funcomapp/" target="_blank"><p class="navroutes">f</p></a>
+            <a class="dot" href="https://twitter.com/FuncomT" target="_blank"><p class="navroutes">G</p></a>
+            <a class="dot" href="https://facebook.com/funcomapp" target="_blank"><p class="navroutes">in</p></a>
+        </div>
+        <p class="textcss">or use your email for registration</p>
+        <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+            <input class="inputform" type="text" name="name" (keypress)="alphabetsOnly($event)" id="name" placeholder="Name" formControlName="name">
+            <input class="inputform" type="text" name="email" id="email" placeholder="Email" formControlName="email">
+            <input class="inputform" type="password" name="password" id="password" placeholder="Password" (ngModelChange)="passwordCheck()" formControlName="password">
+            <div class="spanpasswrd">
+                <span *ngIf="pswdAlphabets">Password should have atleast 8 alphabets</span>
+                <span *ngIf="pswdSpecialDigit">Password should have atleast 1 special character and 1 digit</span>
+                <span *ngIf="pswdLength">Password should have atleast 15 characters</span>
+            </div>
+            <div>
+                
+                <button class="button button-primary w-100 m-b-6 h-46 buttoncss" style="    margin-left: 15px;"  type="submit">
+                    SIGN UP
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
